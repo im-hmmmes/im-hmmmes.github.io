@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>form</title>
+    <link href="/2024/05/05/form/"/>
+    <url>/2024/05/05/form/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="e689bd3c9e086ff177da66191ac5353ef4d451e66b9d8d870b0dcc28224bccfe">2e7ad0443a74e829653eda01aab37f212e5442e4b8791edc94504e1c38127770</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/05/05/hello-world/"/>
     <url>/2024/05/05/hello-world/</url>
