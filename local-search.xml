@@ -4,32 +4,6 @@
   
   
   <entry>
-    <title>testing</title>
-    <link href="/2024/05/12/testing/"/>
-    <url>/2024/05/12/testing/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>IS form &amp; HKMOOC</title>
-    <link href="/2024/05/07/form/"/>
-    <url>/2024/05/07/form/</url>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="ec538d168aceab6f4379dc7d911146721d7305501d31db7ba44574c830baa7d1">2e7ad0443a74e829653eda01aab37f21d45310928b6a266bc6b34bcc1b2c49faee55d51a9b1ba2555dc26f00fb5e0d434dc0b7a89d321904415bb6b0cc3712f3</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/2024/05/06/hello-world/"/>
     <url>/2024/05/06/hello-world/</url>
