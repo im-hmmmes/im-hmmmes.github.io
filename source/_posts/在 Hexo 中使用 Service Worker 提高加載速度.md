@@ -1,10 +1,10 @@
 ---
 abbrlink: ''
 categories: []
-date: 20.05.24
+date: '2024-05-19T22:22:37.865+08:00'
 tags: []
 title: 在 Hexo 中使用 Service Worker 提高加載速度
-updated: 20.05.24
+updated: '2024-05-19T22:22:37.865+08:00'
 ---
 ### 在 Hexo 中使用 Service Worker 提高加載速度
 
