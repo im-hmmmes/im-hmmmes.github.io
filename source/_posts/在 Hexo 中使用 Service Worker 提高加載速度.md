@@ -2,11 +2,11 @@
 abbrlink: ''
 categories:
 - - wrote-by-ai
-date: 20.05.24
+date: 2024-05-20 00:00:00
 tags:
 - hexo
 title: 在 Hexo 中使用 Service Worker 提高加載速度
-updated: 20.05.24
+updated: 2024-05-20 00:00:00
 ---
 ### 在 Hexo 中使用 Service Worker 提高加載速度
 
