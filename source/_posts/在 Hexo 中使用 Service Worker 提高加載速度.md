@@ -1,110 +1,69 @@
 ---
-abbrlink: ''
+abbrlink: hexo-pwa
 categories:
 - - wrote-by-ai
-date: 2024-05-20 00:00:00
+date: '2024-05-20T00:00:00+08:00'
 tags:
 - hexo
-title: 在 Hexo 中使用 Service Worker 提高加載速度
-updated: 2024-05-20 00:00:00
+title: 如何在 Hexo 中使用 Hexo-PWA 插件實現 PWA 功能
+updated: '2024-05-20T00:00:00+08:00'
 ---
-### 在 Hexo 中使用 Service Worker 提高加載速度
+## 如何在 Hexo 中使用 Hexo-PWA 插件實現 PWA 功能
 
-Service Worker 是一種在背景中運行的腳本，能夠幫助網站實現離線功能、背景同步和推送通知等功能。通過在 Hexo 中配置 Service Worker，可以顯著提高網站的加載速度和用戶體驗。本文將介紹如何在 Hexo 中使用 `hexo-offline` 插件來實現這一目標。
+### 1. 安裝 Hexo-PWA 插件
 
-#### 前提條件
-
-- 已安裝 Node.js 和 npm
-- 已安裝 Hexo 並創建了一個 Hexo 博客
-
-### 步驟一：安裝 `hexo-offline` 插件
-
-首先，安裝 `hexo-offline` 插件。這個插件可以自動為你的 Hexo 博客生成和註冊 Service Worker。
+在進行安裝之前，確保你已經在你的電腦上安裝了 Node.js 和 npm（Node.js 的套件管理器）。進入你的 Hexo 專案目錄，打開終端或命令行，執行以下命令安裝 Hexo-PWA 插件：
 
 ```bash
-npm install hexo-offline@latest
+npm install hexo-pwa --save
 ```
 
-### 步驟二：配置 `hexo-offline`
+這個命令會自動下載並安裝 Hexo-PWA 插件，同時將其添加到你的 Hexo 專案的依賴中。
 
-從 `hexo-offline` v2 開始，插件的配置不再放在 `_config.yml` 中，而是需要在 Hexo 根目錄創建一個新的配置文件 `hexo-offline.config.cjs`。
+### 2. 配置 Hexo-PWA 插件
 
-#### 創建 `hexo-offline.config.cjs`
+配置 Hexo-PWA 插件是實現 PWA 功能的關鍵。打開你的 Hexo 專案配置文件 `_config.yml`，並添加以下配置：
 
-在 Hexo 根目錄中創建 `hexo-offline.config.cjs` 文件，並將以下內容寫入該文件：
-
-```javascript
-module.exports = {
-  mode: 'generateSW',
-  globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,gif}'],
-  swDest: 'public/sw.js',
-  runtimeCaching: [
-    {
-      urlPattern: /\.(?:html|js|css|png|jpg|jpeg|svg|gif)$/,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'hexo-cache',
-        expiration: {
-          maxEntries: 50,
-          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
-        },
-      },
-    },
-  ],
-};
+```yaml
+pwa:
+  enable: true
+  manifest:
+    name: 'Your Site Name'         # 你的網站名稱
+    short_name: 'Short Name'       # 簡稱
+    start_url: '/'                 # 啟動 URL
+    display: 'standalone'          # 應用展示模式（standalone、fullscreen、minimal-ui、browser）
+    background_color: '#ffffff'    # 背景顏色
+    theme_color: '#333333'         # 主題顏色
+  sw: 'service-worker.js'          # 這裡是 Service Worker 檔案的路徑，默認為 'service-worker.js'
 ```
 
-這段配置將告訴 `workbox` 在生成的靜態文件中查找所有 HTML、JS、CSS、PNG、JPG、JPEG、SVG 和 GIF 文件，並使用 CacheFirst 策略進行緩存。
+這裡有一些關於配置的說明：
 
-#### 移除 `_config.yml` 中的 `offline` 配置
+- `enable`: 設置為 true 以啟用 PWA 功能。
+- `manifest`: 在 Web App Manifest 中配置應用的各種參數，包括名稱、簡稱、啟動 URL、展示模式、背景顏色和主題顏色。
+- `sw`: 這裡指定了 Service Worker 檔案的路徑。Service Worker 是實現 PWA 功能的核心，它負責緩存資源以實現離線訪問和提高性能。確保這個路徑正確設置是非常重要的。
 
-確保從 `_config.yml` 文件中移除任何與 `offline` 有關的配置，因為這些配置現在應該在 `hexo-offline.config.cjs` 文件中。
+### 3. 生成靜態資源並部署站點
 
-### 步驟三：在 HTML 中註冊 Service Worker
-
-你需要在網站的主 HTML 文件中註冊 Service Worker。在 Hexo 中，你可以通過修改佈局文件來實現這一點。
-
-#### 修改 `head.ejs` 文件
-
-找到並打開主題的 `layout/_partial/head.ejs` 文件，然後在結尾處添加以下腳本代碼來註冊 Service Worker：
-
-```html
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
-</script>
-```
-
-### 步驟四：重新生成和部署
-
-完成以上配置後，重新生成靜態文件並部署你的 Hexo 網站：
+完成配置後，你需要重新生成你的 Hexo 站點。在終端或命令行中，執行以下命令：
 
 ```bash
 hexo clean
 hexo generate
+```
+
+這將生成一個包含 PWA 功能的 Hexo 站點。然後，你可以將生成的靜態資源部署到你的服務器或靜態網站托管服務上：
+
+```bash
 hexo deploy
 ```
 
-### 故障排除
+### 4. 驗證 PWA 功能
 
-在執行 `hexo generate` 時，可能會遇到一些錯誤，例如：
+完成部署後，打開你的網站，使用瀏覽器開發者工具（DevTools）中的 "Application" 選項卡來驗證 PWA 功能是否正常工作。在這裡，你可以查看你的站點是否已經被成功添加到主屏幕，以及檢查 Service Worker 是否已經成功註冊。
 
-```bash
-FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
-Error: [GenerateSW] 'generateSW' property is not expected to be here. Did you mean property 'globPatterns'?
-```
+這就是在 Hexo 中使用 Hexo-PWA 插件實現 PWA 功能的完整步驟。請特別注意確保 Service Worker 路徑的正確設置！希望這對你有所幫助！
 
-這通常是由於配置錯誤導致的。請確保 `hexo-offline.config.cjs` 文件的配置正確，特別是 `mode` 和 `globPatterns` 屬性的使用。
+---
 
-### 總結
-
-通過上述步驟，你可以在 Hexo 中成功配置和使用 Service Worker，從而提高網站的加載速度和用戶體驗。`hexo-offline` 插件使這一過程變得簡單且高效，並提供了靈活的配置選項來滿足不同需求。
-
-如果在配置過程中遇到問題，請參考 [Hexo 官方文檔](https://hexo.io/docs/troubleshooting.html) 或 [hexo-offline 插件的使用說明](https://github.com/JLHwung/hexo-offline#usage)。
+這次我添加了更多的說明和細節，希望這樣更清楚易懂！
