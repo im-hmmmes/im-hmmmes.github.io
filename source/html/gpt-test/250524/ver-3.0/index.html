@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">聯絡我</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .about-me, .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        .about-me h2, .contact-form h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+        .about-me p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function changeLanguage(lang) {
+            fetch(`/html/gpt-test/250524/ver-3.0/languages/${lang}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('page-title').innerText = data.contact_me;
+                    document.getElementById('about-me-title').innerText = data.about_me;
+                    document.getElementById('about-me-description').innerText = data.description;
+                    document.getElementById('example').innerText = data.example;
+                    document.getElementById('example-text').innerText = data.example_text;
+                    document.getElementById('contact-me-title').innerText = data.contact_me;
+                    document.getElementById('label-name').innerText = data.name;
+                    document.getElementById('label-email').innerText = data.email;
+                    document.getElementById('label-message').innerText = data.message;
+                    document.getElementById('submit-button').innerText = data.submit;
+                });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            changeLanguage('zh-tw'); // 預設語言為繁體中文
+            document.getElementById('language-selector').addEventListener('change', (e) => {
+                changeLanguage(e.target.value);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="language-selector">
+        <select id="language-selector">
+            <option value="zh-tw">繁體中文</option>
+            <option value="zh-cn">简体中文</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+    <div class="about-me">
+        <h2 id="about-me-title">關於我</h2>
+        <p id="about-me-description">這裡是關於你的簡介。你可以在這裡介紹自己，分享你的背景、興趣、專業經歷等。</p>
+        <p id="example">例如：</p>
+        <p id="example-text">我是某某大學的畢業生，目前從事於某某行業。我喜歡閱讀、旅行和寫作。歡迎通過下方的聯絡方式與我交流。</p>
+    </div>
+
+    <div class="contact-form">
+        <h2 id="contact-me-title">聯絡我</h2>
+        <form action="https://imhmmmes.000webhostapp.com/webhook_notify.php" method="POST">
+            <label for="name" id="label-name">姓名</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email" id="label-email">電子郵件</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message" id="label-message">訊息</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" id="submit-button">提交</button>
+        </form>
+    </div>
+</body>
+</html>
