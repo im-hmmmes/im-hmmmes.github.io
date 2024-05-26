@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的個人網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 5px;
+        }
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .blog {
+            margin: 20px 0;
+        }
+        .blog h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .blog article {
+            margin-bottom: 20px;
+        }
+        .contact {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        .contact h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        .contact form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>歡迎來到我的個人網站</h1>
+            <nav>
+                <ul>
+                    <li><a href="#blog">博客</a></li>
+                    <li><a href="#contact">聯絡方式</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="blog" class="content blog">
+            <h2>博客</h2>
+            <article>
+                <h3>文章標題 1</h3>
+                <p>這是第一篇博客文章的內容...</p>
+            </article>
+            <article>
+                <h3>文章標題 2</h3>
+                <p>這是第二篇博客文章的內容...</p>
+            </article>
+        </div>
+
+        <div id="contact" class="content contact">
+            <h2>聯絡方式</h2>
+            <form>
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">電子郵件</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">訊息</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 我的個人網站. 保留所有權利.</p>
+        </div>
+    </footer>
+</body>
+</html>

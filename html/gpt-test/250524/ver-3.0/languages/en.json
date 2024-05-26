@@ -1,0 +1,11 @@
+{
+    "about_me": "About Me",
+    "description": "This is a brief introduction about yourself. You can introduce yourself here, share your background, interests, professional experience, etc.",
+    "example": "For example:",
+    "example_text": "I am a graduate of XYZ University, currently working in the XYZ industry. I enjoy reading, traveling, and writing. Feel free to reach out to me through the contact form below.",
+    "contact_me": "Contact Me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit"
+}
