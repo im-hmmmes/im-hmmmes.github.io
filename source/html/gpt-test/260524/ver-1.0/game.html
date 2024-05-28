@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quest: 冒險程式世界</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Code Quest: 冒險程式世界</h1>
+        <div id="timer">時間剩餘：<span id="time">30</span> 秒</div>
+        <div id="score">分數：<span id="points">0</span></div>
+        <div id="question">
+            <h2>問題：哪個標籤用於建立段落？</h2>
+            <div class="option" data-answer="wrong">A. &lt;h1&gt;</div>
+            <div class="option" data-answer="correct">B. &lt;p&gt;</div>
+            <div class="option" data-answer="wrong">C. &lt;div&gt;</div>
+            <div class="option" data-answer="wrong">D. &lt;span&gt;</div>
+        </div>
+        <div id="feedback"></div>
+        <button id="start-game">開始遊戲</button>
+        <button id="upload-score" style="display:none;">上傳分數</button>
+        <div id="leaderboard"></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
