@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/html/gpt-test/260524/ver-1.0/**/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "/api/server.js" },
+      { "src": "/html/gpt-test/260524/ver-1.0/(.*)", "dest": "/public/html/gpt-test/260524/ver-1.0/$1" }
+    ]
+  }
+  

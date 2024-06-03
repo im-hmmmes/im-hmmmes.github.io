@@ -2,7 +2,7 @@
 title: openccc
 date: 2024-05-26 12:45:10
 tags:
-hide: true
+hidden: true
 ---
 Tim N. Adames
 3813 Charter Street
