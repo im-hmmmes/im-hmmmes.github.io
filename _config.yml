@@ -8,7 +8,10 @@ subtitle: ''
 description: ''
 keywords:
 author: im_hmmmes
-language: zh-HK
+language:
+  - zh-HK
+  - zh-Hant
+  - en
 timezone: ''
 
 # URL
@@ -29,6 +32,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - '*.json'
   - html/**/*
 
 # Writing
@@ -93,7 +97,6 @@ pagination_dir: page
 include:
 exclude:
 ignore:
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
@@ -108,4 +111,4 @@ deploy:
   message: blog_update
 
 sitemap:
-    path: sitemap.xml
+  path: sitemap.xml
